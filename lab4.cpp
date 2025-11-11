@@ -78,7 +78,7 @@ public:
         }
         if(mail!=nowy)
         {
-            cout<<"\nbÅ‚Ä™dny mail - brak @\n";
+            cout<<"\nb³êdny mail - brak @\n";
         }
     }
     void set_telefon(string nowy)
@@ -89,14 +89,55 @@ public:
         }
         else
         {
-            cout<<"\nbÅ‚Ä™dna dÅ‚ugoÅ›Ä‡ numeru\n";
+            cout<<"\nb³êdna d³ugoœæ numeru\n";
         }
     }
 
-    // Sprawdzenie poprawnoÅ›ci wieku
+    // Sprawdzenie poprawnoœci wieku
 
-    // Metoda wyÅ›wietlajÄ…ca dane
+    // Metoda wyœwietlaj¹ca dane
 
+};
+
+class Pracownik{
+protected:
+    string stanowisko;
+    float wynagrodzenie;
+
+public:
+    Pracownik(string s, float wyn)
+    {
+        stanowisko=s;
+        wynagrodzenie=wyn;
+    }
+    // Metoda wyœwietlaj¹ca stanowisko (dostêpna tylko dla klas dziedzicz¹cych)
+
+};
+
+class Nauczyciel
+ : public Pracownik
+{
+    public:
+    Nauczyciel(string s, float wyn)
+        : Pracownik(s, wyn)
+    {}
+    void pokazDane()
+    {
+        cout<<stanowisko<<" "<<wynagrodzenie;
+    }
+};
+
+class Administracja
+ : public Pracownik
+{
+    public:
+    Administracja(string s, float wyn)
+        : Pracownik(s, wyn)
+    {}
+    void pokazDane()
+    {
+        cout<<stanowisko<<" "<<wynagrodzenie;
+    }
 };
 
 void z1()
@@ -122,7 +163,10 @@ void z2()
 
 void z3()
 {
-
+    Administracja Leciej("dyrektor", 6125.23);
+    Nauczyciel Wilczynska("matematyczka", 4784.98);
+    Leciej.pokazDane();
+    Wilczynska.pokazDane();
 }
 
 int main()
@@ -156,3 +200,4 @@ int main()
     }
     return 0;
 }
+
